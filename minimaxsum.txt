@@ -1,0 +1,56 @@
+==== QUESTION ====
+
+Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+
+
+==== ANSWER ====
+
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+/*
+ * Complete the 'miniMaxSum' function below.
+ *
+ * The function accepts INTEGER_ARRAY arr as parameter.
+ */
+
+fun miniMaxSum(arr: Array<Int>): Unit {
+    // Write your code here
+    var minSum = 0L
+    var maxSum = 0L
+
+    arr.sort()
+    for (i in 0 until 4) {
+        minSum += arr[i]
+    }
+    for (i in 1..4) {
+        maxSum += arr[i]
+    }
+
+    print(minSum)
+    print(" ")
+    print(maxSum)
+}
+
+fun main(args: Array<String>) {
+
+    val arr = readLine()!!.trimEnd().split(" ").map { it.toInt() }.toTypedArray()
+
+    miniMaxSum(arr)
+}
