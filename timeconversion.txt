@@ -1,0 +1,48 @@
+==== QUESTION ====
+
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+
+Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+- 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+
+
+
+==== ANSWER ====
+
+import kotlin.collections.*
+import kotlin.io.*
+import kotlin.text.*
+
+/*
+ * Complete the 'timeConversion' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+fun timeConversion(s: List<String>) {
+    // Write your code here
+    val sF = s.last()
+    val sChuncked = sF.chunked(2)
+    var s0 = s[0].toInt()
+
+
+    when {
+        sChuncked[1] == "AM" -> {
+            if (s0 == 12) print("00:${s[1]}:${sChuncked[0]}")
+            else print("${s[0]}:${s[1]}:${sChuncked[0]}")
+        }
+        sChuncked[1] == "PM" -> {
+            if ( s0 in 1..11)  {
+                s0 +=  12
+                print("${s0}:${s[1]}:${sChuncked[0]}")
+            } else print("${s[0]}:${s[1]}:${sChuncked[0]}")
+        }
+    }
+}
+
+fun main(args: Array<String>) {
+    val s = readLine()!!.trimEnd().split(":")
+
+    timeConversion(s)
+}
