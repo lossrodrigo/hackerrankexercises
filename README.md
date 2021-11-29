@@ -1,2 +1,2 @@
 # hackerrankexercises
-:woman_teacher: :woman_teacher: SOLVED EXERCISES FROM HACKERRANK.COM - RESOLUTION IN KOTLIN. :nerd_face:
+:woman_teacher: :white_check_mark: SOLVED EXERCISES FROM HACKERRANK.COM - RESOLUTION IN KOTLIN. :nerd_face:
