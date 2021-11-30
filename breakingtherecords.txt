@@ -1,0 +1,71 @@
+==== QUESTION ====
+
+Maria plays college basketball and wants to go pro. Each season she maintains a record of her play. She tabulates the number of times she breaks her season record for most points and least points in a game. Points scored in the first game establish her record for the season, and she begins counting from there.
+
+
+
+
+==== ANSWER ====
+
+
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+/*
+ * Complete the 'timeConversion' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+fun breakingRecords(scores: Array<Int>): IntArray {
+    // Write your code here
+    var min = scores[0]
+    var max = scores[0]
+    var count:IntArray = intArrayOf(0, 0)
+
+
+    for (score in scores )
+        when {
+            score > max -> {
+                max = score
+                count[0] += 1
+            }
+            score < min -> {
+                min = score
+                count[1] +=1
+            }
+    }
+
+    return count
+}
+
+fun main(args: Array<String>) {
+    val n = readLine()!!.trim().toInt()
+
+    val scores = readLine()!!.trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+    val result = breakingRecords(scores)
+
+    for (i in 0..1) print("${result[i]} ")
+
+}
+
+
+
