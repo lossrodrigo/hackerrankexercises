@@ -1,0 +1,36 @@
+=== QUESTIONS ====
+
+
+Given an array of integers and a positive integer , determine the number of  pairs where i< j and ar[i] + ar[j] is divisible by k.
+
+==== ANSWER ====
+
+fun divisibleSumPairs(n: Int, k: Int, ar: Array<Int>): Int {
+    // Write your code here
+    var sum = 0
+
+    for (i in 0 until n) {
+        for (j in 0 until n){
+            if (i < j) {
+                    if((ar[i]+ar[j]) % k == 0){
+                        sum += 1
+                    }
+            }
+        }
+    }
+    return sum
+}
+
+fun main(args: Array<String>) {
+    val first_multiple_input = readLine()!!.trimEnd().split(" ")
+
+    val n = first_multiple_input[0].toInt()
+
+    val k = first_multiple_input[1].toInt()
+
+    val ar = readLine()!!.trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+    val result = divisibleSumPairs(n, k, ar)
+
+    println(result)
+}
