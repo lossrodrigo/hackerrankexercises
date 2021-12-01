@@ -1,0 +1,46 @@
+==== QUESTION ====
+
+There is a collection of input strings and a collection of query strings. For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
+
+
+==== ANSWER ====
+
+fun matchingStrings(strings: Array<String>, queries: Array<String>, stringsCount: Int): MutableList<Int> {
+    // Write your code here
+    val n = stringsCount
+    val results = mutableListOf<Int>()
+
+    for (i in 0 until queries.size) {
+
+        var sum =0
+        for (string in strings) {
+            if (queries[i] == string) {
+                sum += 1
+            }
+        }
+        results.add(sum)
+    }
+    return results
+}
+
+fun main(args: Array<String>) {
+    val stringsCount = readLine()!!.trim().toInt()
+
+    val strings = Array<String>(stringsCount, { "" })
+    for (i in 0 until stringsCount) {
+        val stringsItem = readLine()!!
+        strings[i] = stringsItem
+    }
+
+    val queriesCount = readLine()!!.trim().toInt()
+
+    val queries = Array<String>(queriesCount, { "" })
+    for (i in 0 until queriesCount) {
+        val queriesItem = readLine()!!
+        queries[i] = queriesItem
+    }
+
+    val res = matchingStrings(strings, queries, stringsCount)
+
+    println(res.joinToString("\n"))
+}
