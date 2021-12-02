@@ -1,0 +1,78 @@
+==== QUESTION ====
+
+You will be given a list of 32 bit unsigned integers. Flip all the bits (1 -> 0 and 0 -> 1 ) and return the result as an unsigned integer.
+
+
+==== ANSWER =====
+
+
+import kotlin.collections.*
+import kotlin.io.*
+import kotlin.ranges.*
+import kotlin.text.*
+
+/*
+ * Complete the 'gradingStudents' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY grades as parameter.
+ */
+
+/*
+ * Complete the 'flippingBits' function below.
+ *
+ * The function is expected to return a LONG_INTEGER.
+ * The function accepts LONG_INTEGER n as parameter.
+ */
+
+fun flippingBits(n: Array<Long>): Long {
+    // Write your code here
+
+    var binaryNumber = mutableListOf<Long>()
+    val inverseBinary = mutableListOf<Long>()
+    var resultDecimal = 0.0
+
+
+    //transforms a decimal number into a binary number
+    for (i in 0 until n.size) {
+        while (n[i] > 0) {
+            binaryNumber.add(n[i] % 2)
+            n[i] = n[i] / 2
+        }
+    }
+
+    //adding "0" to become a binaryNumber with 32 bits (32 char)
+    for (j in binaryNumber.size until 32) {
+        binaryNumber.add(0)
+    }
+
+    //finds out a inverse binary number
+    for (k in 0 until binaryNumber.size) {
+        if (binaryNumber[k] == 1L) {
+            inverseBinary.add(0L)
+        } else inverseBinary.add(1L)
+    }
+
+    //finds out a equivalent decimal number from inverseBinary
+    for (i in 0 until inverseBinary.size) {
+        resultDecimal += inverseBinary[i] * (Math.pow(2.0, i.toDouble()))
+    }
+
+    var res = resultDecimal.toLong()
+
+    return res
+}
+
+fun main(args: Array<String>) {
+    val q = readLine()!!.trim().toInt()
+    val n = Array<Long>(q) { 0 }
+
+    for (qItr in 0 until q) {
+        n[qItr] = readLine()!!.trim().toLong()
+
+        val result = flippingBits(n)
+
+        println(result)
+    }
+}
+
