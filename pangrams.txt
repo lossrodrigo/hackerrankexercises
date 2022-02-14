@@ -1,0 +1,65 @@
+------ QUESTION -----
+A pangram is a string that contains every letter of the alphabet. Given a sentence determine whether it is a pangram in the English alphabet. Ignore case. Return either pangram or not pangram as appropriate.
+
+
+
+------- ANSWER -------
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+/*
+ * Complete the 'pangrams' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+fun pangrams(s: String): String {
+    // Write your code here
+    var s = s.split("")
+    var sUppercase = mutableListOf<String>()
+    var sFinal = mutableListOf<String>()
+    var sSet: Set<String>
+    val alphabetCap  = setOf("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q",
+        "R","S","T","U","V","W","X","Y","Z")
+    val res: String
+
+    for (i in s.indices) sUppercase.add(s[i].toUpperCase())
+    for (i in sUppercase.indices){
+        if (sUppercase[i] == "" || sUppercase[i] == " ") else sFinal.add(sUppercase[i])
+    }
+    sFinal.sort()
+    sSet = sFinal.toSet()
+
+    if (sSet == alphabetCap) res = "pangram" else res  = "not pangram"
+
+
+
+
+    return res
+
+}
+
+fun main(args: Array<String>) {
+    val s = readLine()!!
+
+    val result = pangrams(s)
+
+    println(result)
+}
